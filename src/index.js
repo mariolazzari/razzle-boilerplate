@@ -16,7 +16,7 @@ if (module.hot) {
 
 //const port = process.env.PORT || 3000;
 
-const port = 3002;
+const port = 3000;
 
 export default express()
   .use((req, res) => app.handle(req, res))
