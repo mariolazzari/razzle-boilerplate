@@ -6,6 +6,9 @@ import { ServerStyleSheets, ThemeProvider } from "@material-ui/styles";
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom";
 
+import { Provider } from "react-redux";
+import store from "./store";
+
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
 const server = express();
@@ -18,11 +21,13 @@ server
     const sheets = new ServerStyleSheets();
     const markup = renderToString(
       sheets.collect(
-        <StaticRouter location={req.url} context={context}>
-          <ThemeProvider theme={theme}>
-            <App />
-          </ThemeProvider>
-        </StaticRouter>
+        <Provider store={store}>
+          <StaticRouter location={req.url} context={context}>
+            <ThemeProvider theme={theme}>
+              <App />
+            </ThemeProvider>
+          </StaticRouter>
+        </Provider>
       )
     );
     const css = sheets.toString();

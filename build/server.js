@@ -23,7 +23,7 @@ module.exports =
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "22a1083d4875818ece36";
+/******/ 	var hotCurrentHash = "6a07b2dcc7e5cf4a297c";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -1077,7 +1077,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/core/Typography */ "@material-ui/core/Typography");
 /* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "C:\\Code\\Progetti\\with-material-ui\\src\\About.js";
+var _jsxFileName = "C:\\Code\\Progetti\\razzle-boilerplate\\src\\About.js";
 
 
 
@@ -1126,7 +1126,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _App_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_App_css__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
-var _jsxFileName = "C:\\Code\\Progetti\\with-material-ui\\src\\App.js";
+var _jsxFileName = "C:\\Code\\Progetti\\razzle-boilerplate\\src\\App.js";
 
 
 
@@ -1177,22 +1177,45 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "react-router-dom");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "C:\\Code\\Progetti\\with-material-ui\\src\\Home.js";
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/Typography */ "@material-ui/core/Typography");
+/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_3__);
+var _jsxFileName = "C:\\Code\\Progetti\\razzle-boilerplate\\src\\Home.js";
+
+
 
 
 
 var Home = function Home() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+  var _useSelector = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useSelector"])(function (state) {
+    return {
+      locale: state.app.locale
+    };
+  }),
+      locale = _useSelector.locale;
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_3___default.a, {
+    variant: "h2",
+    color: "primary",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7,
+      lineNumber: 14,
       columnNumber: 7
     }
-  }, "Welcome to Razzle."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+  }, "Welcome to Razzle."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_3___default.a, {
+    variant: "h4",
+    color: "secondary",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18,
+      columnNumber: 7
+    }
+  }, "Locale: ", locale), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "about",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8,
+      lineNumber: 22,
       columnNumber: 7
     }
   }, "About"));
@@ -1231,7 +1254,7 @@ if (true) {
 } //const port = process.env.PORT || 3000;
 
 
-var port = 3002;
+var port = 3000;
 /* harmony default export */ __webpack_exports__["default"] = (express__WEBPACK_IMPORTED_MODULE_0___default()().use(function (req, res) {
   return app.handle(req, res);
 }).listen(port, function (err) {
@@ -1241,6 +1264,54 @@ var port = 3002;
   }
 
   console.log("> Started on port ".concat(port));
+}));
+
+/***/ }),
+
+/***/ "./src/reducers/app.Reducer.js":
+/*!*************************************!*\
+  !*** ./src/reducers/app.Reducer.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// app reducer
+var initState = {
+  locale: "it"
+};
+
+var appReducer = function appReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.payload) {
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (appReducer);
+
+/***/ }),
+
+/***/ "./src/reducers/index.js":
+/*!*******************************!*\
+  !*** ./src/reducers/index.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "redux");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _app_Reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.Reducer */ "./src/reducers/app.Reducer.js");
+
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
+  app: _app_Reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
 }));
 
 /***/ }),
@@ -1266,7 +1337,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_dom_server__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "react-router-dom");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_6__);
-var _jsxFileName = "C:\\Code\\Progetti\\with-material-ui\\src\\server.js";
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./store */ "./src/store.js");
+var _jsxFileName = "C:\\Code\\Progetti\\razzle-boilerplate\\src\\server.js";
+
+
 
 
 
@@ -1278,35 +1354,68 @@ var _jsxFileName = "C:\\Code\\Progetti\\with-material-ui\\src\\server.js";
 var assets = __webpack_require__(/*! ./build/assets.json */ "./build/assets.json");
 
 var server = express__WEBPACK_IMPORTED_MODULE_2___default()();
-server.disable("x-powered-by").use(express__WEBPACK_IMPORTED_MODULE_2___default.a["static"]("C:\\Code\\Progetti\\with-material-ui\\public")).get("/*", function (req, res) {
+server.disable("x-powered-by").use(express__WEBPACK_IMPORTED_MODULE_2___default.a["static"]("C:\\Code\\Progetti\\razzle-boilerplate\\public")).get("/*", function (req, res) {
   var context = {};
   var sheets = new _material_ui_styles__WEBPACK_IMPORTED_MODULE_4__["ServerStyleSheets"]();
-  var markup = Object(react_dom_server__WEBPACK_IMPORTED_MODULE_5__["renderToString"])(sheets.collect( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["StaticRouter"], {
+  var markup = Object(react_dom_server__WEBPACK_IMPORTED_MODULE_5__["renderToString"])(sheets.collect( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_7__["Provider"], {
+    store: _store__WEBPACK_IMPORTED_MODULE_8__["default"],
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 24,
+      columnNumber: 9
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["StaticRouter"], {
     location: req.url,
     context: context,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21,
-      columnNumber: 9
+      lineNumber: 25,
+      columnNumber: 11
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_material_ui_styles__WEBPACK_IMPORTED_MODULE_4__["ThemeProvider"], {
     theme: _theme__WEBPACK_IMPORTED_MODULE_3__["default"],
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22,
-      columnNumber: 11
+      lineNumber: 26,
+      columnNumber: 13
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_App__WEBPACK_IMPORTED_MODULE_0__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23,
-      columnNumber: 13
+      lineNumber: 27,
+      columnNumber: 15
     }
-  })))));
+  }))))));
   var css = sheets.toString();
   res.status(200).send("\n<!doctype html>\n<html lang=\"\">\n<head>\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\n  <meta charSet='utf-8' />\n  <title>Welcome to Razzle</title>\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <link rel=\"stylesheet\" href=\"//fonts.googleapis.com/css?family=Roboto:300,400,500\">\n  ".concat(assets.client.css ? "<link rel=\"stylesheet\" href=\"".concat(assets.client.css, "\">") : "", "\n  ").concat(css ? "<style id='jss-ssr'>".concat(css, "</style>") : "", "\n    ").concat( false ? undefined : "<script src=\"".concat(assets.client.js, "\" defer crossorigin></script>"), "\n</head>\n<body>\n  <div id=\"root\">").concat(markup, "</div>\n</body>\n</html>"));
 });
 /* harmony default export */ __webpack_exports__["default"] = (server);
+
+/***/ }),
+
+/***/ "./src/store.js":
+/*!**********************!*\
+  !*** ./src/store.js ***!
+  \**********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "redux");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var redux_devtools_extension__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux-devtools-extension */ "redux-devtools-extension");
+/* harmony import */ var redux_devtools_extension__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(redux_devtools_extension__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux-thunk */ "redux-thunk");
+/* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(redux_thunk__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _reducers___WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reducers/ */ "./src/reducers/index.js");
+
+
+
+
+var middleware = [redux_thunk__WEBPACK_IMPORTED_MODULE_2___default.a];
+var store = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers___WEBPACK_IMPORTED_MODULE_3__["default"], Object(redux_devtools_extension__WEBPACK_IMPORTED_MODULE_1__["composeWithDevTools"])(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"].apply(void 0, middleware)));
+/* harmony default export */ __webpack_exports__["default"] = (store);
 
 /***/ }),
 
@@ -1344,9 +1453,9 @@ var theme = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_0__["create
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Code\Progetti\with-material-ui\node_modules\razzle\node_modules\razzle-dev-utils\prettyNodeErrors.js */"./node_modules/razzle/node_modules/razzle-dev-utils/prettyNodeErrors.js");
-__webpack_require__(/*! C:\Code\Progetti\with-material-ui\node_modules\webpack\hot\poll.js?300 */"./node_modules/webpack/hot/poll.js?300");
-module.exports = __webpack_require__(/*! C:\Code\Progetti\with-material-ui\src */"./src/index.js");
+__webpack_require__(/*! C:\Code\Progetti\razzle-boilerplate\node_modules\razzle\node_modules\razzle-dev-utils\prettyNodeErrors.js */"./node_modules/razzle/node_modules/razzle-dev-utils/prettyNodeErrors.js");
+__webpack_require__(/*! C:\Code\Progetti\razzle-boilerplate\node_modules\webpack\hot\poll.js?300 */"./node_modules/webpack/hot/poll.js?300");
+module.exports = __webpack_require__(/*! C:\Code\Progetti\razzle-boilerplate\src */"./src/index.js");
 
 
 /***/ }),
@@ -1461,6 +1570,17 @@ module.exports = require("react-dom/server");
 
 /***/ }),
 
+/***/ "react-redux":
+/*!******************************!*\
+  !*** external "react-redux" ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-redux");
+
+/***/ }),
+
 /***/ "react-router-dom":
 /*!***********************************!*\
   !*** external "react-router-dom" ***!
@@ -1469,6 +1589,39 @@ module.exports = require("react-dom/server");
 /***/ (function(module, exports) {
 
 module.exports = require("react-router-dom");
+
+/***/ }),
+
+/***/ "redux":
+/*!************************!*\
+  !*** external "redux" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("redux");
+
+/***/ }),
+
+/***/ "redux-devtools-extension":
+/*!*******************************************!*\
+  !*** external "redux-devtools-extension" ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("redux-devtools-extension");
+
+/***/ }),
+
+/***/ "redux-thunk":
+/*!******************************!*\
+  !*** external "redux-thunk" ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("redux-thunk");
 
 /***/ })
 

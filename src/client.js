@@ -4,13 +4,17 @@ import theme from "./theme";
 import { ThemeProvider } from "@material-ui/styles";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./store";
 
 hydrate(
-  <BrowserRouter>
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
-  </BrowserRouter>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </BrowserRouter>
+  </Provider>,
   document.getElementById("root"),
   () => {
     // [ReHydratation](https://github.com/cssinjs/jss/blob/master/docs/ssr.md)
